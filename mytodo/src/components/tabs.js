@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { TiEdit } from "react-icons/ti";
 import { MdDeleteForever } from "react-icons/md"
 import ListGroup from 'react-bootstrap/ListGroup';
-// import TodoCard from './card';
+import TodoCard from './card';
 // import Pagination from 'react-bootstrap/Pagination';
 
 function UncontrolledExample(props) {
@@ -44,15 +44,7 @@ function UncontrolledExample(props) {
                             <Card.Body>
                                 <Card.Title>
                                     {props.todoItems.filter(activeItem => !activeItem.completed).map(i => (
-                                        <Card>
-                                            <ListGroup variant="flush">
-                                                <ListGroup.Item>
-                                                    <div contentEditable={contentEdit} onBlur={listOnChangeHandler} id={i.id}>{i.title.trim()}</div>
-                                                    <TiEdit onClick={enableEdit} />
-                                                    <MdDeleteForever onClick={onDelete} />
-                                                </ListGroup.Item>
-                                            </ListGroup>
-                                        </Card>
+                                        <TodoCard key={i.id} id={i.id} title={i.title} />
                                     ))}
                                 </Card.Title>
                             </Card.Body>

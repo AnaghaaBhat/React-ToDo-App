@@ -51,7 +51,7 @@ function Todo() {
             Add todo: <input ref={curValue} name="todo" type="text"></input>
             <button type="submit"> Submit</button>
             </form>
-             <UncontrolledExample onEdit={editItem} onComplete={completeItem} onDelete={deleteItem} todoItems={items} />
+            {items.length > 0 && <UncontrolledExample onEdit={editItem} onComplete={completeItem} onDelete={deleteItem} todoItems={items} />}
         </div>
      );
 }

@@ -38,12 +38,11 @@ function UncontrolledExample(props) {
 
         return (
             <div style={{ display: 'block', width: 700, padding: 30 }}>
-                <h4>React-Bootstrap Tab Component</h4>
                 <Tabs defaultActiveKey="first" fill>
                     <Tab key="active" eventKey="first" title="Active">
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
-                                <Card.Text>
+                                <Card.Title>
                                     {props.todoItems.filter(activeItem => !activeItem.completed).map(i => (
                                         <Card>
                                             <ListGroup variant="flush">
@@ -55,7 +54,7 @@ function UncontrolledExample(props) {
                                             </ListGroup>
                                         </Card>
                                     ))}
-                                </Card.Text>
+                                </Card.Title>
                             </Card.Body>
                         </Card>
                     </Tab>
@@ -63,7 +62,7 @@ function UncontrolledExample(props) {
                     <Tab key="completed" eventKey="second" title="Completed">
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
-                                <Card.Text>
+                                <Card.Title>
                                     {props.todoItems.filter(activeItem => activeItem.completed).map(i => (
                                         <Card>
                                             <ListGroup variant="flush">
@@ -74,7 +73,7 @@ function UncontrolledExample(props) {
                                             </ListGroup>
                                         </Card>
                                     ))}
-                                </Card.Text>
+                                </Card.Title>
                             </Card.Body>
                         </Card>
                     </Tab>

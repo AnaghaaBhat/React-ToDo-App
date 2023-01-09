@@ -2,7 +2,8 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { TiEdit } from "react-icons/ti";
 import { MdDeleteForever } from "react-icons/md"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { todoContext } from './Todo'
 
 function TodoCard(props) {
 
@@ -18,22 +19,23 @@ function TodoCard(props) {
 
     const onDelete = (e) => {
         if (e.target.nodeName !== 'svg') {
-            return props.onDelete(parseInt(e.target.parentElement.parentElement.childNodes[0].id))
+           return todoCardContext.contextDispatch({type: 'delete', payload: { itemId: parseInt(e.target.parentElement.parentElement.childNodes[0].id)}})
         }
-        props.onDelete(parseInt(e.target.parentElement.childNodes[0].id))
+        todoCardContext.contextDispatch({type: 'delete', payload: { itemId: parseInt(e.target.parentElement.childNodes[0].id), itemValue: e.target.innerHTML.trim() }})
     }
 
     const listOnChangeHandler = (e) => {
         toggleContentEditable(false)
         if (e.target.innerHTML.trim().length !== 0) {
-            props.onEdit(parseInt(e.target.id), e.target.innerHTML)
+            todoCardContext.contextDispatch({type: 'edit', payload: { itemId: parseInt(e.target.id), itemValue: e.target.innerHTML.trim() }})
         }
     }
 
+    const todoCardContext = useContext (todoContext)
     return (
         <Card>
-            <ListGroup variant="flush">
-                <ListGroup.Item>
+            <ListGroup key={props.id} variant="flush">
+                <ListGroup.Item key={props.id}>
                     <div contentEditable={contentEdit} onBlur={listOnChangeHandler} id={props.id}>{props.title.trim()}</div>
                     <TiEdit onClick={enableEdit} />
                     <MdDeleteForever onClick={onDelete} />

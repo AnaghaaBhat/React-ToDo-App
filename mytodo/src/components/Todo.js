@@ -39,7 +39,7 @@ function Todo() {
 
     const addItems = (e) => {
         e.preventDefault()
-        reducerFunc(items, {type: 'add',
+        dispatch({type: 'add',
             payload: {
                 id: items[items.length-1].id + 1,
                 title: e.target.todo.value,

@@ -55,7 +55,7 @@ function UncontrolledExample(props) {
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
                                 <Card.Title>
-                                    {props.todoItems.filter(activeItem => activeItem.completed).map(i => (
+                                    {props.todoItems.filter(completeItem => completeItem.completed).map(i => (
                                         <Card>
                                             <ListGroup variant="flush">
                                                 <ListGroup.Item>

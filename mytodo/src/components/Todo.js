@@ -12,7 +12,6 @@ const reducerFunc = (state, action) => {
         return state.filter(i => i.id !== action.payload.itemId)
     }
     if (action.type === 'complete') {
-
     }
     if (action.type === 'add') {
         state = [...state, action.payload]
@@ -40,7 +39,6 @@ function Todo() {
 
     const addItems = (e) => {
         e.preventDefault()
-
         reducerFunc(items, {type: 'add',
             payload: {
                 id: items[items.length-1].id + 1,
@@ -55,8 +53,8 @@ function Todo() {
         <todoContext.Provider value={{contextVar: items, contextDispatch: dispatch}}>
         <div>
             <form onSubmit={addItems}>
-            Add todo: <input ref={curValue} name="todo" type="text"></input>
-            <button type="submit"> Submit</button>
+            <input placeholder='Add todo...' ref={curValue} name="todo" type="text"></input>
+            <button type="submit"> Add</button>
             </form>
             {(items && items.length > 0) && <UncontrolledExample  todoItems={items} />}
         </div>
